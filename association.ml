@@ -26,9 +26,8 @@ let rec symlink ?(origin=Filename.current_dir_name) ~ignores ~cwd { target; link
     then (
       printf "  Reading ignore file %s\n\n" ignore_file;
       In_channel.(with_open_bin ignore_file input_lines) @ ignores)
-    else (
-      printf "  Ignore file %s does NOT exist\n\n" ignore_file;
-      ignores)
+    else
+      ignores
   in
 
   if not (Sys.file_exists link) then
