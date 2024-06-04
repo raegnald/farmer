@@ -1,0 +1,17 @@
+
+(ocamllex lexer)
+(menhir
+ (modules parser))
+
+(library
+ (name farmer_lib)
+ (modules association lexer parser)
+ (libraries str)
+ (foreign_stubs
+  (language c)
+  (names farmer)))
+
+(executable
+ (public_name farmer)
+ (modules farmer)
+ (libraries farmer_lib))

@@ -1,0 +1,5 @@
+
+* To do
+- [X] Replace =$VARNAME= with the variable from the environment
+- [ ] Ignore rules for folders and files
+
