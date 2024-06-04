@@ -1,5 +1,4 @@
 
 * To do
 - [X] Replace =$VARNAME= with the variable from the environment
-- [ ] Ignore rules for folders and files
-
+- [ ] Ignore rules for folders and files (for every folder)

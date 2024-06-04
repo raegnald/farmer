@@ -34,7 +34,8 @@ rule read =
                           Str.global_substitute env_var replace_env_var f
                         in
                         FILEPATH f' }
-      | _ as c        { raise (Unknown_character c) }
+      | _ as c        { Printf.ksprintf failwith
+                          "Unknown character %C in %s" c (show_lexbuf lexbuf) }
 
 and comment =
   parse newline | eof { new_line lexbuf; read lexbuf }

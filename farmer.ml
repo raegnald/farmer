@@ -13,10 +13,11 @@ let parse_assocs filepath =
 
 let () =
   try
-    if Array.length Sys.argv < 2 then failwith "Not enough arguments" else
+    if Array.length Sys.argv < 2 then failwith "Pass me an associations file" else
       let assocs = parse_assocs Sys.argv.(1)
-      and cwd = Sys.getcwd () in
-      List.iter (Association.symlink cwd) assocs
+      and cwd = Sys.getcwd ()
+      and ignores = ["ignore"] in
+      List.iter (Association.symlink ~ignores ~cwd) assocs
   with
     Failure msg | Sys_error msg ->
       Printf.eprintf "\027[31mFailure\027[0m: %s\n" msg;
